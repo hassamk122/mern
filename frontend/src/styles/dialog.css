@@ -1,0 +1,31 @@
+@import "./variables.css";
+.dialog-container{
+    font-family: "Montserrat",sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 560px;
+}
+.dialog-container form{
+    position: relative;
+}
+.dialog-container label{
+     display: block;
+     font-weight: 500;
+}
+.dialog-container input{
+    font-weight: 500;
+    width: 90%;
+    padding: 5px 10px;
+}
+.dialog-container select{
+    display: block;
+}
+.dialog-btns-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}

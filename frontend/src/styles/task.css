@@ -2,50 +2,101 @@
 .task-container{
     font-family: 'Roboto',sans-serif;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    width: 320px;
     padding: 10px;
+    border-radius: 5px;
     background-color: var(--primary-white);
-    border-radius: 3px;
-}
-table{
-     border-collapse: collapse;
-}
-table,th,td{
-    border: 1px solid var(--secondary-black);
+box-shadow: 2px 7px 1px -4px rgba(0,0,0,0.02);
+-webkit-box-shadow: 2px 7px 1px -4px rgba(0,0,0,0.02);
+-moz-box-shadow: 2px 7px 1px -4px rgba(0,0,0,0.02);
 }
 
-.task-th{
-    color: var(--primary-black);
-}
 
-.task-title,.task-description,.task-status,.task-dueDate{
-    padding: 10px 20px;
-}
-.task-dueDate{
-    color: var(--primary-black);
-}
+
+
+
 .task-title{
+    font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 5px;
     color: var(--primary-black);
 }
 .task-description{
-    
-    color: var(--primary-black);
+    font-family: "Montserrat",sans-serif; 
+    color: var(--alternate-black);
+      font-size: 0.70rem;
+      min-height: 186px;
+       border-bottom: 1px solid var(--secondary-white);
 }
 .task-status{
     font-weight: 400;
+    font-size: 0.80rem;
     color: var(--primary-red);
     background-color: var(--alternate-red);
+    padding: 2px 4px;
+    border-radius: 3px;
 }
 .task-delete-btn{
-    font-weight: 600;
-    font-size: 1rem;
-    color: white;
+  color: var(--primary-red);
+       padding: 2px 3px;
+    background-color: transparent;
     border: none;
-    padding: 5px 10px;
-    margin-top: 10px;
     cursor: pointer;
-    border-radius: 3px;
-    background-color: var(--primary-red);
+    &:hover{
+        border-radius: 4px;
+        background-color: var(--alternate-red);
+    }
+
+}
+.task-update-div{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    border-bottom: 1px solid var(--secondary-white);
+    padding-bottom: 5px;
+}
+.task-update-btn{
+    color: var(--alternate-black);
+       padding: 2px 3px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    &:hover{
+        border-radius: 4px;
+        background-color: var(--alternate-white);
+    }
+}
+
+
+.task-header{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.task-description-label{
+    font-family: "Montserrat",sans-serif;
+    font-weight: 300;
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: var(--secondary-black);
+}
+.task-dueDate-label,.task-dueDate{
+    font-size: 0.90rem;
+    font-weight: 300;
+     color: var(--secondary-black);
+     font-family: 'Roboto',sans-serif;
+}
+.task-duedate-div{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    padding-top: 5px;
+}
+.task-logo{
+    color: var(--secondary-black);
 }

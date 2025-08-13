@@ -1,16 +1,12 @@
 import {Schema,model} from "mongoose";
 
 
-const priorty = {
-    HIGH: "high",
-    MEDIUM: "medium",
-    LOW: "low"
-};
+
 
 const status = {
     COMPLETED: "completed",
     INPROGRESS: "inProgress",
-    UNCOMPLETED: "unComplete"
+    UNCOMPLETED: "Not Started"
 };
 
 const taskSchema = new Schema({
@@ -22,9 +18,8 @@ const taskSchema = new Schema({
         type : String,
         required : true,
     },
-    priority : {
-        type : String,
-        enum:Object.values(priorty),
+    dueDate : {
+        type : Date,
         required : true,
     },
     status :{

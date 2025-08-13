@@ -15,7 +15,7 @@ router.get("/tasks", async (request, response) => {
 
 router.post("/createtask", async (request, response) => {
   try {
-    const { title, description, priority } = request.body;
+    const { title, description, dueDate } = request.body;
 
     if (!title || !description) {
       return res
@@ -23,7 +23,7 @@ router.post("/createtask", async (request, response) => {
         .json({ message: "Title and description are required" });
     }
 
-    const task = await Task.create({ title, description, priority });
+    const task = await Task.create({ title, description, dueDate });
 
     return response.status(201).json(task);
   } catch (error) {
@@ -35,19 +35,46 @@ router.post("/createtask", async (request, response) => {
 });
 router.delete("/tasks/:id", async (request, response) => {
   try {
-    const { id } = req.params;
+    const { id } = request.params;
 
     const deleted = await Task.deleteOne({ _id: id });
 
     if (deleted.deletedCount === 0) {
-      return res.status(404).json({ message: "Task not found" });
+      return response.status(404).json({ message: "Task not found" });
     }
 
-    return res.status(200).json({ id });
+    return response.status(200).json({ id });
     
   } catch (error) {
     console.error("DELETE /tasks/:id error:", error.message);
-    return res.status(500).json({ message: "Could not delete task" });
+    return response.status(500).json({ message: "Could not delete task" });
+  }
+});
+
+router.put("/tasks/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description, dueDate, status } = req.body; 
+    const updateResult = await Task.updateOne(
+      { _id: id },
+      {
+        $set: {
+          title,
+          description,
+          dueDate,
+          status,
+        }
+      }
+    );
+
+    if (updateResult.matchedCount === 0) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+    const updatedTask = await Task.findById(id);
+    return res.status(200).json(updatedTask);
+  } catch (error) {
+    console.error("UPDATE /tasks/:id error:", error.message);
+    return res.status(500).json({ message: "Could not update task" });
   }
 });
 

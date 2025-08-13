@@ -35,11 +35,20 @@ export const TaskProvider = ({ children }) => {
     }
   }
 
+  async function updateTask(id,updatedFields) {
+    try{
+      const {data:updateTask} = await axios.put(`/api/tasks/${id}`,updatedFields);
+      setTasks((prev)=>prev.map((task)=>(task._id === id? updateTask:task)));
+    }
+    catch(error){
+       console.error("Error updating task:", error);
+    }
+  }
   useEffect(() => {
     fetchTasks();
   }, []);
 
-  const values = useMemo(()=>({isLoading, tasks, fetchTasks, deleteTask, addTask }),[isLoading,tasks]);
+  const values = useMemo(()=>({isLoading, tasks, fetchTasks, deleteTask, addTask,updateTask }),[isLoading,tasks]);
   return (
     <TaskContext.Provider value={values}>
       {children}

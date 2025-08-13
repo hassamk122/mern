@@ -5,4 +5,9 @@
   --secondary-white:hsl(0, 0%, 95%);
   --secondary-black:hsl(220, 9%, 46%);
   --primary-black:hsl(0, 0%, 20%);
+  --primary-red:hsl(0, 100%, 57%);
+  --secondary-red:hsl(0, 100%, 63%);
+  --alternate-red:hsl(0, 100%, 78%);
+  --primary-green:hsl(120, 100%, 57%);
+   --secondary-green:hsl(120, 100%, 63%);
 }

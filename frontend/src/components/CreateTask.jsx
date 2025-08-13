@@ -1,4 +1,4 @@
-import React, { useState ,useContext} from "react";
+import React, { useState ,useContext, useCallback} from "react";
 import { TaskContext } from "../contexts/TaskContext";
 import '../styles/dialog.css';
 function CreateTask() {
@@ -6,7 +6,8 @@ function CreateTask() {
   const [showdialog, setShowDialog] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState("low");
+   const today =useCallback(()=> new Date().toISOString().split("T")[0]); 
+  const [dueDate, setDueDate] = useState(today);
 
 
   function handleOpenDialog() {
@@ -17,16 +18,15 @@ function CreateTask() {
   }
   async function handleSubmitForm(e) {
     e.preventDefault();
-
-
     await addTask({
       title,
       description,
-      priority,
+      dueDate,
     });
     setTitle("");
     setDescription("");
-    setPriority("low");
+    setDueDate(today);
+    handleCloseDialog();
   }
 
   return (
@@ -35,6 +35,7 @@ function CreateTask() {
       {showdialog && (
         <dialog className="dialog-container" open>
           <form onSubmit={handleSubmitForm}>
+            <div className="input-div">
             <label htmlFor="title">Title</label>
             <input
               value={title}
@@ -44,30 +45,28 @@ function CreateTask() {
               required
             ></input>
             <label htmlFor="description">Description</label>
-            <input
+            <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               id="description"
               placeholder="Enter description ..."
               required
-            ></input>
-            <label htmlFor="priority">Priority</label>
-            <select
-              id="priority"
-              value={priority}
-              onChange={(e) => setPriority(e.target.value)}
-              required
-            >
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
-            </select>
-            <div className="dialog-btns-div">
-            <button className="dialog-submit" type="submit">Add Task</button>
-            <button className="dialog-close" onClick={handleCloseDialog}>close</button>
+            ></textarea>
+             <label htmlFor="">Due on:</label>
+             <input
+              id="dueDate"
+              type="date"
+              name="trip-start"
+              value={dueDate}
+              min={today()}
+              onChange={(e) => setDueDate(e.target.value)}
+            />
             </div>
-          </form>
-          
+            <div className="dialog-btns-div">
+              <button className="dialog-cancel" onClick={handleCloseDialog}>cancel</button>
+            <button className="dialog-submit" type="submit">Add Task</button>
+            </div>
+          </form>   
         </dialog>
       )}
     </>
@@ -75,3 +74,5 @@ function CreateTask() {
 }
 
 export default CreateTask;
+
+

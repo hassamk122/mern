@@ -1,0 +1,51 @@
+@import "./variables.css";
+.task-container{
+    font-family: 'Roboto',sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    background-color: var(--primary-white);
+    border-radius: 3px;
+}
+table{
+     border-collapse: collapse;
+}
+table,th,td{
+    border: 1px solid var(--secondary-black);
+}
+
+.task-th{
+    color: var(--primary-black);
+}
+
+.task-title,.task-description,.task-status,.task-dueDate{
+    padding: 10px 20px;
+}
+.task-dueDate{
+    color: var(--primary-black);
+}
+.task-title{
+    color: var(--primary-black);
+}
+.task-description{
+    
+    color: var(--primary-black);
+}
+.task-status{
+    font-weight: 400;
+    color: var(--primary-red);
+    background-color: var(--alternate-red);
+}
+.task-delete-btn{
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: var(--primary-red);
+}

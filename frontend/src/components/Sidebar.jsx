@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/sidebar.css';
-import {LogOut,Settings, KeyRound, LayoutDashboard } from "lucide-react";
+import {LogOut,Settings, KeyRound, LayoutDashboard,NotebookTabs, icons } from "lucide-react";
 
 const navs = [
   {
@@ -10,6 +10,10 @@ const navs = [
   {
     title:"Password Manager",
     icon:<KeyRound color="currentColor" />
+  },
+  {
+    title:"Notes",
+    icon:<NotebookTabs color="currentColor" />
   },
   {
     title:"Settings",

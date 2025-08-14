@@ -28,6 +28,7 @@ function CreateTask() {
     setDueDate(today);
     handleCloseDialog();
   }
+  console.log("Dialog rerender");
 
   return (
     <>
@@ -45,14 +46,20 @@ function CreateTask() {
               required
             ></input>
             <label htmlFor="description">Description</label>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              id="description"
-              placeholder="Enter description ..."
-              required
-            ></textarea>
-             <label htmlFor="">Due on:</label>
+            <div style={{ position: "relative", width: "300px" }}>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Enter description ..."
+                required
+                maxLength={100}
+                style={{ width: "100%", paddingBottom: "20px" }}
+              />
+              <span className="span-description">
+                {description.length}/100
+              </span>
+            </div>
+             <label htmlFor="dueDate">Due on:</label>
              <input
               id="dueDate"
               type="date"

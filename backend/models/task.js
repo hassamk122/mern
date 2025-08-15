@@ -6,7 +6,7 @@ import {Schema,model} from "mongoose";
 const status = {
     COMPLETED: "completed",
     INPROGRESS: "inProgress",
-    UNCOMPLETED: "Not Started"
+    UNCOMPLETED: "NotStarted"
 };
 
 const taskSchema = new Schema({

@@ -30,7 +30,7 @@ box-shadow: 2px 7px 1px -4px rgba(0,0,0,0.02);
       min-height: 186px;
        border-bottom: 1px solid var(--secondary-white);
 }
-.task-status{
+.task-status .NotStarted{
     font-weight: 400;
     font-size: 0.80rem;
     color: var(--primary-red);
